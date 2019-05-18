@@ -16,7 +16,7 @@ public class AppUtils {
  
     // Сохранить информацию пользователя в Session.
     public static void storeLoginedUser(HttpSession session, User loginedUser) {
-        // На JSP можно получить доступ через ${loginedUser}
+        // На JSP можно получить доступ через ${loginedUser} // javax.el.PropertyNotFoundException: Property [userName] not found on type [model.User]
         session.setAttribute("loginedUser", loginedUser);
     }
  

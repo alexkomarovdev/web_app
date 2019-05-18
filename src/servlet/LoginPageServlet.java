@@ -49,9 +49,9 @@ public class LoginPageServlet extends HttpServlet {
         String password = req.getParameter("password");
         System.out.println("введенный пароль");
         System.out.println(password);
-        User userAccount = DataDao.findUser(login, password);
+        User user = DataDao.findUser(login, password);
  
-        if (userAccount == null) {
+        if (user == null) {
             String errorMessage = "Invalid userName or Password";
             System.out.println("Юзераккаунт нулевой");
             req.setAttribute("errorMessage", errorMessage);
@@ -63,7 +63,7 @@ public class LoginPageServlet extends HttpServlet {
             return;
         }
  
-        AppUtils.storeLoginedUser(req.getSession(), userAccount);
+        AppUtils.storeLoginedUser(req.getSession(), user);
         System.out.println("создаем сессию Юзераккаунт ");
         // 
         int redirectId = -1;

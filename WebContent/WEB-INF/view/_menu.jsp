@@ -22,4 +22,5 @@
 </a>
  
 &nbsp;
-<span style="color:red">[ ${loginedUser.userName} ]</span>
+<%-- <span style="color:red">[ ${loginedUser.userName} ]</span> --%>
+<span style="color:red">[ ${loginedUser.name} ]</span>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Учёт документов</title>
+
+</head>
+<body>
+<h1>Авторизация пользователя</h1>
+<form action="/web_app/Auto" method="POST"> <!-- обязательно указываем "/web_app/Auto"  -->
+    Введите имя: <input name="username" />
+    <br><br>
+    Введите пароль: <input name="userage" />
+    <br><br>
+    Gender: <input type="radio" name="gender" value="female" checked />Female
+    <input type="radio" name="gender" value="male" />Male
+    <br><br>
+    Country: <select name="country">
+        <option>Canada</option>
+        <option>Spain</option>
+        <option>France</option>
+        <option>Germany</option>
+    </select>
+    <br><br>
+    Courses: 
+    <input type="checkbox" name="courses" value="JavaSE" checked />Java SE
+    <input type="checkbox" name="courses" value="JavaFX" checked />Java FX
+    <input type="checkbox" name="courses" value="JavaEE" checked />Java EE
+    <br><br>
+    <input type="submit" value="Submit" />
+</form>
+<form enctype="multipart/form-data" method="post">
+	<p>Загрузите сканы документов на сервер</p>
+	<p><input type="file" name="photo" multiple accept="image/*,image/jpeg">
+	<input type="submit" value="Отправить"></p>
+</form>
+</body>
+</html>

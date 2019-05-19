@@ -13,8 +13,8 @@
       <h3>Login Page</h3>
  
       <p style="color: red;">${errorString}</p>
- 
-      <form method="POST" action="${pageContext.request.contextPath}/LoginPageServlet">
+ <!-- set codepage input data -->
+      <form method="POST" accept-charset="UTF-8" action="${pageContext.request.contextPath}/LoginPageServlet">
          <input type="hidden" name="redirectId" value="${param.redirectId}" />
          <table border="1">
             <tr>

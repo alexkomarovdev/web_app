@@ -17,8 +17,8 @@ static {
 private static void initUsers() {
 	 
     // This user has a role as ASUP.
-    //User asup = new User(1,"Анатолий Николаевич","Желизнык","1","1", 10, SecurityConfig.ROLE_ASUP);
-    User asup = new User(1,"1","1","1","1", 10, SecurityConfig.ROLE_ASUP);
+    User asup = new User(1,"Анатолий Николаевич","Желизнык","1","1", 10, SecurityConfig.ROLE_ASUP);
+    //User asup = new User(1,"а","fio","1","а", 10, SecurityConfig.ROLE_ASUP);
 
     // This user has a role Jurist.
     User jur = new User(3,"Наталья Алексеевна","Курникова","3","3", 30, SecurityConfig.ROLE_JURIST);

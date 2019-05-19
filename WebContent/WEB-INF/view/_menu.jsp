@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<a href="${pageContext.request.contextPath}/employeeTask">
+<a href="${pageContext.request.contextPath}/EmployeeTaskServlet">
   Employee Task
 </a>
 ||
-<a href="${pageContext.request.contextPath}/managerTask">
+<a href="${pageContext.request.contextPath}/JurTaskServlet">
   Manager Task
 </a>
 ||

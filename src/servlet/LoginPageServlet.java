@@ -42,6 +42,7 @@ public class LoginPageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub
         String login = req.getParameter("login");
         System.out.println("введенный логин ");

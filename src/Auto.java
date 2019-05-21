@@ -12,10 +12,10 @@ import java.sql.SQLException;//db
 
 import java.io.PrintWriter;
 
-import java.util.List; // for init List
+/*import java.util.List; // for init List
 import java.util.concurrent.CopyOnWriteArrayList; // for create CopyOnWriteArrayList
 import model.User; // our module User
-/**
+*//**
  * Servlet implementation class Auto
  */
 @WebServlet("/Auto")
@@ -98,10 +98,10 @@ public class Auto extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private List<User> users;
+	//private List<User> users;
 	@Override
 	public void init() throws ServletException{
-		users = new CopyOnWriteArrayList<>(); // create ThreadSafety array, no memory leak
+		//List<User>users = new CopyOnWriteArrayList<>(); // create ThreadSafety array, no memory leak
        // users.add(new User("Java", 10));
        // users.add(new User("Vision", 20));
 		System.out.println("*************SERVLET IS INIT**************");

@@ -34,11 +34,11 @@ private static void initUsers() {
     	System.out.println("метод findUser : Юзераккаунт НЕнулевой");
        return u;
     }
-    // получим объект по ключу 2
-    User asup = mapUsers.get(1);
-    System.out.println(asup);
-    User asup2 = mapUsers.get(0);
-    System.out.println(asup2);
+		/*
+		 * // получим объект по ключу 2 User asup = mapUsers.get(1);
+		 * System.out.println(asup); User asup2 = mapUsers.get(0);
+		 * System.out.println(asup2);
+		 */
     System.out.println("метод findUser : Юзераккаунт нулевой");
     return null;
  }	      

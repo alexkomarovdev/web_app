@@ -12,7 +12,7 @@
        
       <h3>Jurist Task</h3>
        
-      Hello, This is a protected page!
+      Hello, This is a JUR protected page!
        
    </body>
 </html>

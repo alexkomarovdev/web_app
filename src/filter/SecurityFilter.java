@@ -33,7 +33,7 @@ public class SecurityFilter implements Filter { // after activing of interface h
 	}
 	
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
+	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -66,19 +66,23 @@ public class SecurityFilter implements Filter { // after activing of interface h
  
         if (servletPath.equals("/LoginPageServlet")) {
             chain.doFilter(request, response);
+            System.out.println("start chain do filter");
             return;
         }
         HttpServletRequest wrapRequest = request;
  
         if (loginedUser != null) {
             // User Name
-            String userName = loginedUser.getName();
+            String name = loginedUser.getName();
+            System.out.println("userName");            
+            System.out.println(name);        
  
             // Роли (Role).
             List<String> roles = loginedUser.getRoles();
- 
+            System.out.println("roles");            
+            System.out.println(roles);     
             // Старый пакет request с помощью нового Request с информацией userName и Roles.
-            wrapRequest = new UserRoleRequestWrapper(userName, roles, request);
+            wrapRequest = new UserRoleRequestWrapper(name, roles, request);
         }
  
         // Страницы требующие входа в систему.
@@ -87,7 +91,7 @@ public class SecurityFilter implements Filter { // after activing of interface h
             // Если пользователь еще не вошел в систему,
             // Redirect (перенаправить) к странице логина.
             if (loginedUser == null) {
- 
+            	System.out.println("Redirect (перенаправить) к странице логина");
                 String requestUri = request.getRequestURI();
  
                 // Сохранить текущую страницу для перенаправления (redirect) после успешного входа в систему.
@@ -100,10 +104,10 @@ public class SecurityFilter implements Filter { // after activing of interface h
             // Проверить пользователь имеет действительную роль или нет?
             boolean hasPermission = SecurityUtils.hasPermission(wrapRequest);
             if (!hasPermission) {
- 
+            	System.out.println("Проверить пользователь имеет действительную роль или нет- accessDenied");
                 RequestDispatcher dispatcher //
                         = request.getServletContext().getRequestDispatcher("/WEB-INF/view/accessDenied.jsp");
- 
+
                 dispatcher.forward(request, response);
                 return;
             }

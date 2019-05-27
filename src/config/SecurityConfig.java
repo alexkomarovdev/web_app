@@ -26,16 +26,16 @@ public class SecurityConfig {
         // Config for role "ASUP".
         List<String> urlPatterns1 = new ArrayList<String>();
  
-        urlPatterns1.add("/userInfo");
-        urlPatterns1.add("/ASUPTask");
+        urlPatterns1.add("/UserInfoServlet");
+        urlPatterns1.add("/ASUPTaskServlet");
  
         mapConfig.put(ROLE_ASUP, urlPatterns1);
  
         // Config for role "JURIST".
         List<String> urlPatterns2 = new ArrayList<String>();
  
-        urlPatterns2.add("/userInfo");
-        urlPatterns2.add("/JuristTask");
+        //urlPatterns2.add("/UserInfoServlet");
+        //urlPatterns2.add("/JurTaskServlet");
  
         mapConfig.put(ROLE_JURIST, urlPatterns2);
     }

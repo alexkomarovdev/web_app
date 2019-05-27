@@ -21,6 +21,7 @@ private static void initUsers() {
     //User asup = new User(1,"а","fio","1","а", 10, SecurityConfig.ROLE_ASUP);
 
     // This user has a role Jurist.
+    //User jur = new User(3,"Наталья Алексеевна","Курникова","3","3", 30, SecurityConfig.ROLE_JURIST);
     User jur = new User(3,"Наталья Алексеевна","Курникова","3","3", 30, SecurityConfig.ROLE_JURIST);
 
     mapUsers.put(asup.getName(), asup); // insert data on the map

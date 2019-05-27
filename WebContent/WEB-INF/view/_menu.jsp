@@ -6,7 +6,11 @@
 </a>
 ||
 <a href="${pageContext.request.contextPath}/JurTaskServlet">
-  Manager Task
+  Jur Task
+</a>
+||
+<a href="${pageContext.request.contextPath}/AsupTaskServlet">
+  ASUP Task
 </a>
 ||
 <a href="${pageContext.request.contextPath}/UserInfoServlet">
@@ -27,7 +31,7 @@
 
 
 
-
+<!-- 
 <article class="accordion">
 
 	<section id="acc1">
@@ -54,5 +58,5 @@
 		<h2><a href="#acc5">Title Five</a></h2>
 		<p>This content appears on page 5.</p>
 	</section>
-</article>
+</article> -->
 

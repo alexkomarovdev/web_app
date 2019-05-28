@@ -1,33 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<a href="${pageContext.request.contextPath}/EmployeeTaskServlet">
+<!-- <a style="color:green;"></a>    --> 
+
+<style>
+.hyper {
+    background-color: gray;
+    color: white;
+    padding: 10px;
+}
+/* a {
+    background-color: gray;
+    color: white;
+    padding: 10px;
+}
+ */
+</style>
+
+<a class="hyper" href="${pageContext.request.contextPath}/EmployeeTaskServlet">
   Employee Task
 </a>
-||
-<a href="${pageContext.request.contextPath}/JurTaskServlet">
+<!-- || -->
+<a class="hyper" href="${pageContext.request.contextPath}/JurTaskServlet">
   Jur Task
 </a>
-||
-<a href="${pageContext.request.contextPath}/AsupTaskServlet">
+<!-- || -->
+<a class="hyper" href="${pageContext.request.contextPath}/AsupTaskServlet">
   ASUP Task
 </a>
-||
-<a href="${pageContext.request.contextPath}/UserInfoServlet">
+<!-- || -->
+<a class="hyper" href="${pageContext.request.contextPath}/UserInfoServlet">
   User Info
 </a>       
-||
-<a href="${pageContext.request.contextPath}/LoginPageServlet">
+<!-- || -->
+<a class="hyper" href="${pageContext.request.contextPath}/LoginPageServlet">
   Login
 </a>
-||
-<a href="${pageContext.request.contextPath}/LogoutPageServlet">
+<!-- || -->
+<a class="hyper" href="${pageContext.request.contextPath}/LogoutPageServlet">
   Logout
 </a>
  
 &nbsp;
 <%-- <span style="color:red">[ ${loginedUser.userName} ]</span> --%>
-<span style="color:red">[ ${loginedUser.name} ]</span>
+<span style="color:green">[ ${loginedUser.name} ]</span>
 
 
 

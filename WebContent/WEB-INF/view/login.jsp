@@ -28,8 +28,8 @@
           
             <tr>
                <td colspan ="2">
-                  <input type="submit" value= "Submit" />
-                  <a href="${pageContext.request.contextPath}/">Cancel</a>
+                  <input type="submit" value= "Войти" />
+                  <button type="button" onclick="javascript:document.location.href='${pageContext.request.contextPath}/'"> Отмена </button> 
                </td>
             </tr>
          </table>

@@ -27,17 +27,20 @@ public class SecurityConfig {
         List<String> urlPatterns1 = new ArrayList<String>();
  
         urlPatterns1.add("/UserInfoServlet");
-        urlPatterns1.add("/ASUPTaskServlet");
+        urlPatterns1.add("/EmployeeTaskServlet");
+        urlPatterns1.add("/AsupTaskServlet");
  
         mapConfig.put(ROLE_ASUP, urlPatterns1);
  
-        // Config for role "JURIST".
-        List<String> urlPatterns2 = new ArrayList<String>();
- 
-        //urlPatterns2.add("/UserInfoServlet");
-        //urlPatterns2.add("/JurTaskServlet");
- 
-        mapConfig.put(ROLE_JURIST, urlPatterns2);
+		
+		  // Config for role "JURIST". 
+		  List<String> urlPatterns2 = new ArrayList<String>();
+		  
+		  urlPatterns2.add("/UserInfoServlet"); 
+		  urlPatterns2.add("/JurTaskServlet");
+		  
+		  mapConfig.put(ROLE_JURIST, urlPatterns2);
+		 
     }
  
     public static Set<String> getAllAppRoles() {

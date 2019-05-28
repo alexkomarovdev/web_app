@@ -113,7 +113,7 @@ public class SecurityFilter implements Filter { // after activing of interface h
             }
         }
  
-        chain.doFilter(wrapRequest, response);		
+        chain.doFilter(wrapRequest, response);		//перейти к следующему фильтру, иначе остановится запрос
 	}	
 	
 }

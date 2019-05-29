@@ -4,17 +4,17 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Страница авторизации</title>
+      <title>Страница регистрации</title>
    </head>
    <body>
  
       <jsp:include page="_menu.jsp"></jsp:include>   
  
-      <h3>Страница авторизации</h3>
+      <h3>Страница регистрации нового пользователя</h3>
  
       <p style="color: red;">${errorString}</p>
  <!-- set codepage input data -->
-      <form method="POST" accept-charset="UTF-8" action="${pageContext.request.contextPath}/LoginPageServlet">
+      <form method="POST" accept-charset="UTF-8" action="${pageContext.request.contextPath}/RegistrationPageServlet">
          <input type="hidden" name="redirectId" value="${param.redirectId}" />
          <table border="1">
             <tr>
@@ -28,23 +28,18 @@
           
             <tr>
                <td colspan ="2">
-                  <input type="submit" value= "Войти" />
+                  <input type="submit" value= "Зарегистрировать" />
                   <button type="button" onclick="javascript:document.location.href='${pageContext.request.contextPath}/'"> Отмена </button> 
                </td>
             </tr>
          </table>
       </form>
  
-      <p style="color:blue;">Login with:</p>
-       
-      employee1/123 <br>
-      manager1/123 <br>
-      Анатолий Николаевич<br> 1 <br>
-      Наталья Алексеевна<br> 3 <br>
+
 <br>
 <br>
 <br>
-<button type="button" onclick="javascript:document.location.href='${pageContext.request.contextPath}/RegistrationPageServlet"> Зарегистрироваться </button>  
+  
  
    </body>
 </html>

@@ -41,11 +41,22 @@ public class RegistrationPageServlet extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
+
         String name = req.getParameter("name");//read name from html form
         String second = req.getParameter("second");//read second from html form
         String login = req.getParameter("login");//read login from html form
         String pass = req.getParameter("pass");//read pass from html form
         String id_department = req.getParameter("id_department");//read department from html form
+        
+        if (name.isEmpty()==true | second.isEmpty()==true | login.isEmpty()==true | pass.isEmpty()==true ) 
+        {
+        System.out.println("Введите обязательные поля!!!"); 
+        PrintWriter writer = resp.getWriter();
+        writer.println("alert(Введите обязательные поля!!!!)"+"</p>");
+        
+        //doGet(req, resp);
+        }
+        else {
         PrintWriter writer = resp.getWriter();
         writer.println("<p>Пользователь с этими данными успешно зарегистрирован в системе!"+"</p>");
         writer.println("<p>Имя: " + name + "</p>");
@@ -54,8 +65,12 @@ public class RegistrationPageServlet extends HttpServlet {
         //writer.println("<p>Пароль: " + pass + "</p>");
         writer.println("<p>Отдел: " + id_department + "</p>");
         writer.println("<a href=/web_app>Главная страница</a>");
+        }
         
-		//doGet(req, resp);
+        
+        	//System.out.println("Введите имя пользователя!!!");
+        	//doGet(req, resp);}
+		
         
 	}
 

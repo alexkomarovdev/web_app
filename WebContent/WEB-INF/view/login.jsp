@@ -44,7 +44,8 @@
 <br>
 <br>
 <br>
-<button type="button" onclick="javascript:document.location.href='${pageContext.request.contextPath}/RegistrationPageServlet"> Зарегистрироваться </button>  
- 
+<form method="GET" accept-charset="UTF-8" action="${pageContext.request.contextPath}/RegistrationPageServlet">
+<input type="submit" value="Зарегистрироваться">  
+</form>
    </body>
 </html>

@@ -106,7 +106,7 @@ public class RegistrationPageServlet extends HttpServlet {
 /*    		            "insert into users (id, name, second, login, pass, id_department)"+
     		            "values ((nextval('seq_pk_id_users'),?,?,?,?,?)");  */
     	    		            "insert into users (id, name, second, login, pass, id_department)"+
-    	    		            "values (3,?,?,?,?,?)");  
+    	    		            "values (nextval('seq_pk_id_users'),?,?,?,?,?)");  
 				        
     		            ps.setString(1, name);  
     		            ps.setString(2, second);  

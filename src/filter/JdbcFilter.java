@@ -21,7 +21,7 @@ import java.sql.*;
 /**
  * Servlet Filter implementation class JdbcFilter
  */
-@WebFilter(urlPatterns = { "/*" })
+//@WebFilter(urlPatterns = { "/*" }) комментарий временный
 public class JdbcFilter implements Filter {
 
 	/**

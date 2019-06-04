@@ -40,12 +40,15 @@
             <tr>
                <td colspan ="2">
                   <input type="submit" value= "Зарегистрировать" />
+
                   <button type="button" onclick="javascript:document.location.href='${pageContext.request.contextPath}/LoginPageServlet"> Отмена </button> 
                </td>
             </tr>
          </table>
       </form>
- 
+                  <form method="GET" accept-charset="UTF-8" action="${pageContext.request.contextPath}/LoginPageServlet">
+					<input type="submit" value="Назад">  
+				  </form>
 
 <br>
 <br>

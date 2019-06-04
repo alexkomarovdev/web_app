@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import filter.DbFilter;
 
 
 /**
@@ -45,7 +46,9 @@ public class RegistrationPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		req.getRequestDispatcher(index).forward(req, resp);
+		
 	}
 
 	/**
@@ -62,7 +65,7 @@ public class RegistrationPageServlet extends HttpServlet {
         String login = req.getParameter("login");//read login from html form
         String pass = req.getParameter("pass");//read pass from html form
         Integer id_department = Integer.parseInt((req.getParameter("id_department")));//read department from html form + convert to Integer
-        
+
         if (name.isEmpty()==true | second.isEmpty()==true | login.isEmpty()==true | pass.isEmpty()==true ) 
         {
         System.out.println("Введите обязательные поля!!!"); 

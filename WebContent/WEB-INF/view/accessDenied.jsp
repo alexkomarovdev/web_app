@@ -4,7 +4,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Access Denied</title>
+      <title>Доступ запрещён!</title>
    </head>
    <body>
     
@@ -12,7 +12,7 @@
     
       <br/><br/>
        
-      <h3 style="color:red;">Access Denied!</h3>
+      <h3 style="color:red;">У Вас нет доступа к данной странице!</h3>
              
    </body>
 </html>

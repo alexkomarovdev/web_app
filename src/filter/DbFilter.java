@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @WebFilter(urlPatterns = { "/*" }) 
 public class DbFilter implements Filter {
-	public Connection conn = null;	
+	public static Connection conn = null;	
 
     /**
      * Default constructor. 
@@ -153,7 +153,7 @@ public class DbFilter implements Filter {
 		}
 		//return null;
 	}
-    public Connection getConn() { 
+    public static Connection getConn() { 
         return conn;
     }
 	

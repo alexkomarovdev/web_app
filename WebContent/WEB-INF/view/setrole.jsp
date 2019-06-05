@@ -22,7 +22,7 @@
     <td>${user.id_department}</td>
     <td>${user.roles}</td>
     <td>
-    <a href='<c:url value="/edit?id=${user.id}" />'>Edit</a> |
+    <a href='<c:url value="/SetRoleEditServlet?id=${user.id}" />'>Редактировать</a> |
     <form method="post" action='<c:url value="/delete" />' style="display:inline;">
         <input type="hidden" name="id" value="${user.id}">
         <input type="submit" value="Delete">

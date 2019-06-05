@@ -13,7 +13,11 @@ public class User {
     private int id_department;
     private List<String> roles;
 
+
+    public User() {}    //как в Metanit инициализируем   
+    
     public User(int id, String name, String second, String login, String password, int id_department, String...roles) {
+
         this.id = id;
     	this.name = name;
     	this.second = second;
@@ -29,6 +33,22 @@ public class User {
            
     }
 
+    public User(int id, String name, String second, String login, String password, int id_department, ArrayList<String> roles) {
+        this.id = id;
+    	this.name = name;
+    	this.second = second;
+    	this.login = login;
+    	this.password = password;
+        this.id_department = id_department; 
+        
+        this.roles = new ArrayList<String>(); // aka ROLES
+        if (roles != null) {
+           for (String r : roles) {
+              this.roles.add(r); }
+           }
+           
+    }    
+    
     public int getId() { // getname => name // rule = JSTL convert getMethod in Method
         return id;
     }

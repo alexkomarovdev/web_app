@@ -1,11 +1,13 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,8 +37,10 @@ public class SetRoleServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    
+    public static ArrayList<User> select() {
+    	ArrayList<User> users = new ArrayList<User>();
+
 		Connection conn = DbFilter.getConn();
 
         Statement statement = null;
@@ -47,10 +51,10 @@ public class SetRoleServlet extends HttpServlet {
 			e.printStackTrace();
 		}
         //Выполним запрос
-        ResultSet result1 = null;
+        ResultSet resultset = null;
 		try {
-			result1 = statement.executeQuery(
-			        "SELECT * FROM users where id >0 ORDER BY id");
+			resultset = statement.executeQuery(
+			        "SELECT * FROM users ORDER BY id");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,31 +64,52 @@ public class SetRoleServlet extends HttpServlet {
         //метод next() , с помощью которого переходим к следующему элементу
         System.out.println("Выводим statement");
         try {
-			while (result1.next()) {
-			    System.out.println("\t Номер в базе #" + result1.getInt("id")
-			            + "\t" + result1.getString("name"));
+			while (resultset.next()) {
+                int id = resultset.getInt(1);
+                String name = resultset.getString(2);
+                String second = resultset.getString(3);
+                String login = resultset.getString(4);
+                String password = resultset.getString(5);
+                int id_department = resultset.getInt(6);
+                String stringArray = resultset.getString(7);
+        		//String[] stringArray = { "a", "b", "c", "d", "e" };
+        		ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(stringArray));
+        		String[] stringArr = new String[arrayList.size()];
+        		arrayList.toArray(stringArr);
+        		for (String s : stringArr)
+        			System.out.println(s);
+        		System.out.println(arrayList);
+
+                String[] roles =  stringArr;
+                User user = new User(id, name, second, login, password, id_department, roles);
+                //User user = new User(id, name, second, login, password, id_department);
+                users.add(user);
+					
+			    System.out.println("\t Номер в базе #" + resultset.getInt("id")
+			            + "\t" + resultset.getString("name"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-								} 		
-   	 //----------------------------------------------------------------------------------------------------------------------
-/*
-        ArrayList<User> listResults=convertToList(result1);
-    	        req.setAttribute("listResults", listResults);
-    	        resp.sendRedirect("ProductList.jsp");
-
-    	public ArrayList<User> convertToList(ResultSet set) throws SQLException {
-    	            ArrayList<User> arrayList=new ArrayList<User>();
-    	            while (set.next())
-    	            {
-    	                User p=new User();
-    	                 p.setName(set.getString("p_name"));
-    	            }
-    	        }
-    	//----------------------------------------------------------------------------------------------------------------------	
-*/		
+								} 		    	
+    	
+    	return users;
+    	
+    }
+    
+    
+    
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
+		String[] stringArray = { "a", "b", "c", "d", "e" };
+		ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(stringArray));
+		System.out.println(arrayList);
+		
+		
+        ArrayList<User> users = SetRoleServlet.select();
+        req.setAttribute("users", users);
+        
 		req.getRequestDispatcher(index).forward(req, resp); // we give SetRole.jsp to PC-user
 	}
 

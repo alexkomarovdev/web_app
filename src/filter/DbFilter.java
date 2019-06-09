@@ -104,7 +104,7 @@ public class DbFilter implements Filter {
 	public void connectDb ()
 	{
 		if (java.lang.System.getProperty("os.name").equals("Windows 7"))
-		{System.out.println("Операционная система Windows7!");
+		{System.out.println("Операционная система Windows 7!");
 		String url = "jdbc:postgresql://127.0.0.1:5432/web_db";
         String username = "admin";
         String password = "web_pg";
@@ -129,6 +129,7 @@ public class DbFilter implements Filter {
 		
 		}
 		else {
+			System.out.println("Операционная система Windows 10!");
 	    	String url = "jdbc:postgresql://10.72.0.128:5432/web_db";
 	        String username = "admin";
 	        String password = "web_pg";

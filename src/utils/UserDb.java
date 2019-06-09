@@ -152,6 +152,22 @@ public class UserDb extends HttpServlet {
     	
     }	
 	
-	
+    public static int update(User user) {
+    	Connection conn = DbFilter.getConn();       
+        String sql = "UPDATE users SET name = ?, price = ? WHERE id = ?";
+                try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
+			/*
+			 * preparedStatement.setString(1, users.getName()); preparedStatement.setInt(2,
+			 * users.getPrice()); preparedStatement.setInt(3, product.getId());
+			 */
+                      
+                    return  preparedStatement.executeUpdate();
+                
+            
+        } catch(Exception ex){
+            System.out.println(ex);
+        }
+        return 0;
+    }	
 	
 }

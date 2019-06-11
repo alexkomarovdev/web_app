@@ -23,9 +23,9 @@
     <td>${user.roles}</td>
     <td>
     <a href='<c:url value="/SetRoleEditServlet?id=${user.id}" />'>Редактировать</a> |
-    <form method="post" action='<c:url value="/delete" />' style="display:inline;">
+    <form method="post" action='<c:url value="/DelUserServlet" />' style="display:inline;">
         <input type="hidden" name="id" value="${user.id}">
-        <input type="submit" value="Delete">
+        <input type="submit" value="Удалить">
     </form>
  </td></tr>
 </c:forEach>

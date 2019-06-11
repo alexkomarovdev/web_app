@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
@@ -90,14 +92,14 @@ public class UserDb extends HttpServlet {
         		arrayList.toArray(stringArr);
         		for (String s : stringArr)
         			System.out.println(s);
-        		System.out.println(arrayList);
+        		//System.out.println(arrayList);
 
                 String[] roles =  stringArr;
                 User user = new User(id, name, second, login, password, id_department, roles);
                 //User user = new User(id, name, second, login, password, id_department);
                 users.add(user);
 					
-			    System.out.println("\t Номер в базе #" + resultset.getInt("id")
+			    System.out.println(arrayList+"\t Номер в базе #" + resultset.getInt("id")
 			            + "\t" + resultset.getString("name"));
 			}
 		} catch (SQLException e) {
@@ -130,8 +132,8 @@ public class UserDb extends HttpServlet {
         		ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(stringArray));
         		String[] stringArr = new String[arrayList.size()];
         		arrayList.toArray(stringArr);
-        		for (String s : stringArr)
-        			System.out.println(s);
+        		//for (String s : stringArr)
+        			//System.out.println(s);
         		System.out.println(arrayList);
 
                 String[] roles =  stringArr;
@@ -154,13 +156,18 @@ public class UserDb extends HttpServlet {
 	
     public static int update(User user) {
     	Connection conn = DbFilter.getConn();       
-        String sql = "UPDATE users SET name = ?, price = ? WHERE id = ?";
+        String sql = "UPDATE users SET name = ?, second = ?, login = ?, password = ?, "
+        		+ "id_department = ?, roles = ? WHERE id = ?";
                 try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
-			/*
-			 * preparedStatement.setString(1, users.getName()); preparedStatement.setInt(2,
-			 * users.getPrice()); preparedStatement.setInt(3, product.getId());
-			 */
-                      
+                	
+					preparedStatement.setString(1, user.getName());
+					preparedStatement.setString(2, user.getSecond());
+					preparedStatement.setString(3, user.getLogin());
+					preparedStatement.setString(4, user.getPassword());
+					preparedStatement.setInt(5, user.getId_department());
+					List<String> user2=user.getRoles();
+					preparedStatement.setArray(6, (Array) user2);//(6, user.getRoles());
+ 
                     return  preparedStatement.executeUpdate();
                 
             
@@ -169,5 +176,26 @@ public class UserDb extends HttpServlet {
         }
         return 0;
     }	
+    
+    
+    public static int delete(int id) {
+    	
+    	Connection conn = DbFilter.getConn();
+               
+            try {
+                  
+                String sql = "DELETE FROM users WHERE id = ?";
+                try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
+                    preparedStatement.setInt(1, id);
+                      
+                    return  preparedStatement.executeUpdate();
+                }
+            
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        return 0;
+    }    
 	
 }

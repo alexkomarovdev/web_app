@@ -15,7 +15,7 @@ public class User {
 
 
     public User() {}    //как в Metanit инициализируем   
-    
+ 
     public User(int id, String name, String second, String login, String password, int id_department, String...roles) {
 
         this.id = id;

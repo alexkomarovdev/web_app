@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,7 +58,29 @@ public class SetRoleEditServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		doGet(request, response);
+		//doGet(request, response);
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String second = request.getParameter("second");
+            String login = request.getParameter("login");
+            String password = request.getParameter("password");
+            int id_department = Integer.parseInt(request.getParameter("id_department"));
+            String roles = request.getParameter("roles");
+            //ArrayList<String> roles = request.getParameter("roles");
+            
+            User user = new User(id, name, second, login, password, id_department, roles);
+            //User user = new User (int id, String name, String second, String login, String password, int id_department, ArrayList<String> roles);
+            
+            UserDb.update(user);
+            response.sendRedirect(request.getContextPath() + "/SetRoleServlet");
+        }
+        catch(Exception ex) {
+             
+            getServletContext().getRequestDispatcher("/WEB-INF/view/notfound.jsp").forward(request, response);   
+        }
+		
+		
 	}
 
 }

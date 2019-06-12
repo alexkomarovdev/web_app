@@ -156,8 +156,8 @@ public class UserDb extends HttpServlet {
 	
     public static int update(User user) {
     	Connection conn = DbFilter.getConn();       
-        String sql = "UPDATE users SET name = ?, second = ?, login = ?, password = ?, "
-        		+ "id_department = ?, roles = ? WHERE id = ?";
+        String sql = "UPDATE users SET name = ?, second = ?, login = ?, pass = ?, "
+        		+ "id_department = ?, role = ? WHERE id = ?";
                 try(PreparedStatement preparedStatement = conn.prepareStatement(sql)){
                 	
 					preparedStatement.setString(1, user.getName());
@@ -165,15 +165,23 @@ public class UserDb extends HttpServlet {
 					preparedStatement.setString(3, user.getLogin());
 					preparedStatement.setString(4, user.getPassword());
 					preparedStatement.setInt(5, user.getId_department());
-					List<String> user2=user.getRoles();
-					preparedStatement.setArray(6, (Array) user2);//(6, user.getRoles());
+					//List<String> user2=user.getRoles();
+					//preparedStatement.setArray(6, (Array) user.getRoles());//(6, user.getRoles());
+					ArrayList<String> list = new ArrayList<String>(user.getRoles());
+					Array array = conn.createArrayOf("VARCHAR", list.toArray());
+					preparedStatement.setArray(6, array);					
+					preparedStatement.setInt(7, user.getId());
+
+					
+
  
                     return  preparedStatement.executeUpdate();
-                
+                    
             
         } catch(Exception ex){
             System.out.println(ex);
         }
+                System.out.println("Запрос выполнен!!");
         return 0;
     }	
     

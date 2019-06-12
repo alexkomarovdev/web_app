@@ -56,7 +56,7 @@ public class SetRoleEditServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		request.setCharacterEncoding("UTF-8");
 		
 		//doGet(request, response);
         try {
@@ -66,7 +66,8 @@ public class SetRoleEditServlet extends HttpServlet {
             String login = request.getParameter("login");
             String password = request.getParameter("password");
             int id_department = Integer.parseInt(request.getParameter("id_department"));
-            String roles = request.getParameter("roles");
+            //String roles = request.getParameter("roles");
+            String[] roles = request.getParameterValues("roles");
             //ArrayList<String> roles = request.getParameter("roles");
             
             User user = new User(id, name, second, login, password, id_department, roles);

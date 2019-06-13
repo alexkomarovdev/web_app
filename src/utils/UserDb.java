@@ -231,5 +231,65 @@ public class UserDb extends HttpServlet {
         return 0;
     }    
     
+    public static User selectUser() {
+    	User users = new User();
+
+		Connection conn = DbFilter.getConn();
+
+        Statement statement = null;
+		try {
+			statement  = ((Connection) conn).createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        //Выполним запрос
+        ResultSet resultset = null;
+		try {
+			resultset = statement.executeQuery(
+			        "SELECT * FROM users ORDER BY id");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        //result это указатель на первую строку с выборки
+        //чтобы вывести данные мы будем использовать 
+        //метод next() , с помощью которого переходим к следующему элементу
+        System.out.println("Выводим statement");
+        try {
+			while (resultset.next()) {
+                int id = resultset.getInt(1);
+                String name = resultset.getString(2);
+                String second = resultset.getString(3);
+                String login = resultset.getString(4);
+                String password = resultset.getString(5);
+                int id_department = resultset.getInt(6);
+                String stringArray = resultset.getString(7);
+        		//String[] stringArray = { "a", "b", "c", "d", "e" };
+        		ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(stringArray));
+        		String[] stringArr = new String[arrayList.size()];
+        		arrayList.toArray(stringArr);
+        		//1306 for (String s : stringArr)
+        			//1306 System.out.println(s);
+        		//System.out.println(arrayList);
+
+                String[] roles =  stringArr;
+                User user = new User(id, name, second, login, password, id_department, roles);
+                //User user = new User(id, name, second, login, password, id_department);
+                //users.add(user);
+					
+			    System.out.println(arrayList+"\t Номер в базе #" + resultset.getInt("id")
+			            + "\t" + resultset.getString("name"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+								} 		    	
+    	
+    	return users;
+    	
+    }	
+//--------------------------------------------------------------------------------------------------------------------------
+    
     
 }

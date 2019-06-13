@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ private static void initUsers() {
     User asup = new User(1,"Анатолий Николаевич","Желизнык","1","1", 10, SecurityConfig.ROLE_ASUP);
     //users.add(new User(UserDb.selectone(0)));
     //User asup = new User(1,"а","fio","1","а", 10, SecurityConfig.ROLE_ASUP);
-
+    //User users = UserDb.selectUser();
     // This user has a role Jurist.
     //User jur = new User(3,"Наталья Алексеевна","Курникова","3","3", 30, SecurityConfig.ROLE_JURIST);
     User jur = new User(3,"Наталья Алексеевна","Курникова","3","3", 30, SecurityConfig.ROLE_JURIST);

@@ -1,6 +1,7 @@
 package servlet;
 
 import model.User;
+import utils.UserDb;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -34,6 +35,14 @@ public class IndexPageServlet extends HttpServlet {
 		 * req.getRequestDispatcher(index).forward(req, resp); // we give index.jsp to
 		 * PC-user
 		 */        
+    	
+		  //users = new CopyOnWriteArrayList<>(); // create ThreadSafety array, no memory leak
+		  //users.add(new User(UserDb.selectone(0))); 
+		
+		  //users.add(new User(1,"Анатолий Николаевич","Желизнык","1","1", 10)); 
+		  //users.add(new User(2,"Майя Валериевна","Ушкова","2","2", 20)); 
+		  //users.add(new User(3,"Наталья Алексеевна","Курникова","3","3", 30)); 
+		  
     	RequestDispatcher dispatcher //
         = this.getServletContext().getRequestDispatcher(index);
 
@@ -41,15 +50,20 @@ public class IndexPageServlet extends HttpServlet {
     }
 	
 	
-	  private List<User> users;
+	  private CopyOnWriteArrayList<User> users;
 	  
 	  @Override 
 	  public void init() throws ServletException{ 
+		  /*1306 
 		  users = new CopyOnWriteArrayList<>(); // create ThreadSafety array, no memory leak
+		  users.add(new User(UserDb.selectone(0))); 
 		
-		  users.add(new User(1,"Анатолий Николаевич","Желизнык","1","1", 10)); 
+		  //users.add(new User(1,"Анатолий Николаевич","Желизнык","1","1", 10)); 
 		  users.add(new User(2,"Майя Валериевна","Ушкова","2","2", 20)); 
-		  users.add(new User(3,"Наталья Алексеевна","Курникова","3","3", 30)); 
+		  users.add(new User(3,"Наталья Алексеевна","Курникова","3","3", 30));
+		  
+		   */
+		  
 		  System.out.println("*************SERVLET IS INIT**************");
 	  }
 	    @Override

@@ -18,6 +18,7 @@ private static void initUsers() {
 	 
     // This user has a role as ASUP.
     User asup = new User(1,"Анатолий Николаевич","Желизнык","1","1", 10, SecurityConfig.ROLE_ASUP);
+    //users.add(new User(UserDb.selectone(0)));
     //User asup = new User(1,"а","fio","1","а", 10, SecurityConfig.ROLE_ASUP);
 
     // This user has a role Jurist.

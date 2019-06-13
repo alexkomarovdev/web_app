@@ -90,8 +90,8 @@ public class UserDb extends HttpServlet {
         		ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(stringArray));
         		String[] stringArr = new String[arrayList.size()];
         		arrayList.toArray(stringArr);
-        		for (String s : stringArr)
-        			System.out.println(s);
+        		//1306 for (String s : stringArr)
+        			//1306 System.out.println(s);
         		//System.out.println(arrayList);
 
                 String[] roles =  stringArr;
@@ -205,5 +205,31 @@ public class UserDb extends HttpServlet {
         }
         return 0;
     }    
-	
+
+    public static int insert(User user) {
+    	Connection conn = DbFilter.getConn(); 
+
+        try{  
+            PreparedStatement ps=conn.prepareStatement(  
+		            "insert into users (id, name, second, login, pass, id_department, role)"+
+		            "values (nextval('seq_pk_id_users'),?,?,?,?,?,?)");  
+	        
+            ps.setString(1, user.getName());  
+            ps.setString(2, user.getSecond());  
+            ps.setString(3, user.getLogin());  
+            ps.setString(4, user.getPassword());  
+            ps.setInt(5, user.getId_department());
+            ps.setArray(6, (Array) user.getRoles());
+              
+            		ps.executeUpdate();  
+    		        System.out.println("запрос выполнен успешно!!!");
+    		 
+        }catch(Exception ex){ex.printStackTrace();}  
+                                  
+
+        
+        return 0;
+    }    
+    
+    
 }

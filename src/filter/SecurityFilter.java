@@ -79,7 +79,7 @@ public class SecurityFilter implements Filter { // after activing of interface h
  
             // Роли (Role).
             List<String> roles = loginedUser.getRoles();
-            System.out.println("roles");            
+            System.out.println("role");            
             System.out.println(roles);     
             // Старый пакет request с помощью нового Request с информацией userName и Roles.
             wrapRequest = new UserRoleRequestWrapper(name, roles, request);
